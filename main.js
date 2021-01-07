@@ -67,7 +67,7 @@ if(kelime.toLowerCase() !== message.content.charAt(0)) return message.channel.se
                 msg.delete({ timeout: 5000})
                 message.delete()
             })
-
+if(!kelimeler) return db.push(`kelimeler_${message.guild.id}`, message.content)
 if(kelimeler.includes(message.content)) return message.channel.send('Bu kelime zaten yazılmış başka bir şey dene :/').then(msg => {
                 msg.delete({ timeout: 5000})
                 message.delete()
