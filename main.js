@@ -82,7 +82,12 @@ if(api.error) return message.channel.send('Yazdığın kelimeyi tdk da bulamadı
                 message.delete()
 db.subtract(`puan_${message.guild.id}_${message.author.id}`, 1)
             })
-
+ 
+if(message.content.charAt(message.content.length-1) === 'ğ'.toLowerCase()) return message.channel.send('sonu ğ ile bitmemeli.').then(msg => {
+                msg.delete({ timeout: 5000})
+                message.delete()
+  })
+ 
 db.push(`kelimeler_${message.guild.id}`, message.content)
 db.set(`son_${message.guild.id}`, message.content.charAt(message.content.length-1))
 db.set(`klm_${message.guild.id}`, message.author.id)
